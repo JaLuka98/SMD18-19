@@ -75,9 +75,8 @@ plt.errorbar(bincenters, entries/(100*width), yerr=np.sqrt(entries)/(100*width),
 # also need to normalize the error bars
 xlinspace = np.linspace(0,18,1000)
 plt.plot(xlinspace, chi2.pdf(xlinspace, 5), label='Chi-Quadrat-Theorie-pdf')
-ddofMle = chi2.fit(sample)
-print(ddofMle)
-plt.plot(xlinspace, chi2.pdf(xlinspace, ddofMle[0]), label='Chi-Quadrat-MLE-pdf')
+params = chi2.fit(sample)
+plt.plot(xlinspace, chi2.pdf(xlinspace, *params), label='Chi-Quadrat-MLE-pdf')
 plt.legend()
 plt.grid()
 plt.savefig('chisquare.pdf')
